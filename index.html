@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BLAKE ALLEN LEWIS — THE LEGEND</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Pacifico&display=swap');
+
+    :root {
+      --neon-green: #39ff14;
+      --neon-pink: #ff006e;
+      --neon-blue: #00f0ff;
+      --neon-yellow: #ffe600;
+      --neon-purple: #bf00ff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      color: white;
+      font-family: 'Bangers', cursive;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* FLOATING PARTICLES */
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.5rem;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+      z-index: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0.6; }
+      100% { transform: translateY(-10vh)  rotate(360deg); opacity: 0; }
+    }
+
+    /* MARQUEE BANNER */
+    .marquee-wrap {
+      background: var(--neon-pink);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 4px solid var(--neon-yellow);
+      border-bottom: 4px solid var(--neon-yellow);
+      position: relative;
+      z-index: 10;
+    }
+    .marquee-wrap span {
+      display: inline-block;
+      animation: marquee 14s linear infinite;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      color: #0a0a0a;
+      font-family: 'Bangers', cursive;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+      position: relative;
+      z-index: 5;
+      background: radial-gradient(ellipse at center, #1a003a 0%, #0a0a0a 70%);
+    }
+
+    .hero-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(3rem, 12vw, 9rem);
+      line-height: 1;
+      letter-spacing: 6px;
+      color: var(--neon-yellow);
+      text-shadow:
+        0 0 10px var(--neon-yellow),
+        0 0 30px var(--neon-yellow),
+        0 0 80px #ff9900,
+        4px 4px 0 var(--neon-pink);
+      animation: flicker 3s infinite alternate;
+    }
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+          0 0 10px var(--neon-yellow),
+          0 0 30px var(--neon-yellow),
+          0 0 80px #ff9900,
+          4px 4px 0 var(--neon-pink);
+      }
+      20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.8;
+      }
+    }
+
+    .hero-subtitle {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1rem, 4vw, 2.2rem);
+      color: var(--neon-green);
+      text-shadow: 0 0 15px var(--neon-green);
+      margin: 10px 0 30px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.04); }
+    }
+
+    /* BIG QUOTE BANNERS */
+    .quote-banner {
+      text-align: center;
+      padding: 30px 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+      position: relative;
+      z-index: 5;
+    }
+    .quote-banner .q-text {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2rem, 7vw, 5rem);
+      letter-spacing: 4px;
+      animation: rainbow 2s linear infinite;
+      display: block;
+    }
+    @keyframes rainbow {
+      0%   { color: #ff0000;           text-shadow: 0 0 20px #ff0000; }
+      16%  { color: #ff9900;           text-shadow: 0 0 20px #ff9900; }
+      33%  { color: var(--neon-yellow); text-shadow: 0 0 20px var(--neon-yellow); }
+      50%  { color: var(--neon-green);  text-shadow: 0 0 20px var(--neon-green); }
+      66%  { color: var(--neon-blue);   text-shadow: 0 0 20px var(--neon-blue); }
+      83%  { color: var(--neon-purple); text-shadow: 0 0 20px var(--neon-purple); }
+      100% { color: #ff0000;           text-shadow: 0 0 20px #ff0000; }
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 40px 60px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .photo-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .photo-card:nth-child(1) { animation-delay: 0.1s; box-shadow: 0 0 20px var(--neon-pink),   0 0 60px var(--neon-pink);   border: 3px solid var(--neon-pink); }
+    .photo-card:nth-child(2) { animation-delay: 0.2s; box-shadow: 0 0 20px var(--neon-green),  0 0 60px var(--neon-green);  border: 3px solid var(--neon-green); }
+    .photo-card:nth-child(3) { animation-delay: 0.3s; box-shadow: 0 0 20px var(--neon-blue),   0 0 60px var(--neon-blue);   border: 3px solid var(--neon-blue); }
+    .photo-card:nth-child(4) { animation-delay: 0.4s; box-shadow: 0 0 20px var(--neon-yellow), 0 0 60px var(--neon-yellow); border: 3px solid var(--neon-yellow); }
+    .photo-card:nth-child(5) { animation-delay: 0.5s; box-shadow: 0 0 20px var(--neon-purple), 0 0 60px var(--neon-purple); border: 3px solid var(--neon-purple); }
+    .photo-card:nth-child(6) { animation-delay: 0.6s; box-shadow: 0 0 20px var(--neon-pink),   0 0 60px var(--neon-pink);   border: 3px solid var(--neon-pink); }
+
+    .photo-card:hover       { transform: scale(1.04) rotate(-1.5deg); }
+    .photo-card:nth-child(even):hover { transform: scale(1.04) rotate(1.5deg); }
+
+    .photo-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .caption {
+      background: rgba(0,0,0,0.88);
+      padding: 14px 16px;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.5;
+      border-top: 2px solid;
+    }
+    .photo-card:nth-child(1) .caption { color: var(--neon-pink);   border-color: var(--neon-pink); }
+    .photo-card:nth-child(2) .caption { color: var(--neon-green);  border-color: var(--neon-green); }
+    .photo-card:nth-child(3) .caption { color: var(--neon-blue);   border-color: var(--neon-blue); }
+    .photo-card:nth-child(4) .caption { color: var(--neon-yellow); border-color: var(--neon-yellow); }
+    .photo-card:nth-child(5) .caption { color: var(--neon-purple); border-color: var(--neon-purple); }
+    .photo-card:nth-child(6) .caption { color: var(--neon-pink);   border-color: var(--neon-pink); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* JANELLE CALLOUT */
+    .janelle-section {
+      text-align: center;
+      padding: 60px 30px;
+      background: radial-gradient(ellipse at center, #3a0020 0%, #0a0a0a 70%);
+      position: relative;
+      z-index: 5;
+      border-top: 5px dashed var(--neon-pink);
+      border-bottom: 5px dashed var(--neon-pink);
+    }
+    .janelle-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2.5rem, 10vw, 8rem);
+      color: var(--neon-pink);
+      text-shadow:
+        0 0 20px var(--neon-pink),
+        0 0 60px var(--neon-pink),
+        6px 6px 0 #fff;
+      letter-spacing: 5px;
+      animation: shake 0.5s infinite alternate;
+    }
+    @keyframes shake {
+      0%   { transform: rotate(-1deg) scale(1); }
+      100% { transform: rotate(1deg)  scale(1.02); }
+    }
+    .janelle-sub {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.1rem, 3.5vw, 2.2rem);
+      color: white;
+      margin-top: 24px;
+      line-height: 1.8;
+      text-shadow: 0 0 10px var(--neon-pink);
+    }
+    .heart {
+      display: inline-block;
+      animation: heartbeat 0.8s ease-in-out infinite;
+      color: var(--neon-pink);
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.35); }
+    }
+
+    /* FACTS SECTION */
+    .facts-section {
+      padding: 60px 40px;
+      position: relative;
+      z-index: 5;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .facts-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--neon-blue);
+      text-shadow: 0 0 20px var(--neon-blue);
+      text-align: center;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+    }
+    .fact {
+      background: rgba(255,255,255,0.04);
+      border-left: 6px solid var(--neon-green);
+      padding: 18px 24px;
+      margin-bottom: 18px;
+      border-radius: 0 8px 8px 0;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.05rem;
+      color: white;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .fact:hover {
+      background: rgba(57,255,20,0.08);
+      transform: translateX(8px);
+    }
+    .fact:nth-child(even) { border-left-color: var(--neon-purple); }
+    .fact:nth-child(even):hover { background: rgba(191,0,255,0.08); }
+
+    /* DIVIDER */
+    .divider {
+      text-align: center;
+      font-size: 1.8rem;
+      padding: 10px;
+      letter-spacing: 14px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.35);
+      position: relative;
+      z-index: 5;
+    }
+    footer span {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    /* CLICK BURST */
+    .burst {
+      position: fixed;
+      pointer-events: none;
+      font-size: 2rem;
+      animation: burstAnim 0.7s ease forwards;
+      z-index: 9999;
+    }
+    @keyframes burstAnim {
+      0%   { transform: scale(0.5) rotate(0deg);   opacity: 1; }
+      100% { transform: scale(2.5) rotate(180deg); opacity: 0; }
+    }
+
+    /* BOTTOM MARQUEE reversed */
+    @keyframes marquee2 {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100vw); }
+    }
+    .marquee-bottom span {
+      animation: marquee2 14s linear infinite !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING PARTICLES -->
+<div class="particle" style="left:5%;  animation-duration:8s;  animation-delay:0s;">🍺</div>
+<div class="particle" style="left:15%; animation-duration:11s; animation-delay:2s;">🌿</div>
+<div class="particle" style="left:25%; animation-duration:9s;  animation-delay:1s;">⭐</div>
+<div class="particle" style="left:35%; animation-duration:13s; animation-delay:4s;">🍺</div>
+<div class="particle" style="left:45%; animation-duration:7s;  animation-delay:0.5s;">💨</div>
+<div class="particle" style="left:55%; animation-duration:10s; animation-delay:3s;">🔥</div>
+<div class="particle" style="left:65%; animation-duration:12s; animation-delay:1.5s;">🌿</div>
+<div class="particle" style="left:75%; animation-duration:8s;  animation-delay:2.5s;">⭐</div>
+<div class="particle" style="left:85%; animation-duration:11s; animation-delay:0.8s;">🍺</div>
+<div class="particle" style="left:93%; animation-duration:9s;  animation-delay:3.5s;">💨</div>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-wrap">
+  <span>🌿 BLAKE ALLEN LEWIS 🌿 THE MAN &bull; THE MYTH &bull; THE LEGEND 🔥 BLAKE ALLEN LEWIS 🔥 THE MAN &bull; THE MYTH &bull; THE LEGEND 🌿 BLAKE ALLEN LEWIS 🌿</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-title">BLAKE<br>ALLEN<br>LEWIS</div>
+  <div class="hero-subtitle">
+    🔥 The World's Greatest Human Being 🔥<br>
+    As Voted By Blake Allen Lewis Himself
+  </div>
+</div>
+
+<!-- QUOTE 1 -->
+<div class="quote-banner">
+  <span class="q-text">🍺 I LOVE DRINKING AND SMOKING WEEED!!! 🌿</span>
+</div>
+
+<div class="divider">⭐ ⭐ ⭐ ⭐ ⭐</div>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <div class="photo-card">
+    <img src="IMG_2203.jpg" alt="Blake on the counter" />
+    <div class="caption">
+      When you said "get on the counter" and Blake took it as a LIFESTYLE CHOICE.<br>
+      <em>Bikini? Yes. Regrets? Absolutely zero.</em>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="IMG_2428.jpg" alt="Blake with bug eyes" />
+    <div class="caption">
+      POV: You just told Blake the gas station is out of White Claws.<br>
+      <em>"Sir, are you okay?" — No. He is NOT.</em>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="IMG_2435.jpg" alt="Blake with whiskey, cigar, and gun" />
+    <div class="caption">
+      Whiskey. PS controller. Cigar. Finger guns.<br>
+      <em>Blake did not come to play. He came to WIN.</em>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="IMG_2568.jpg" alt="Blake at the bar on his phone" />
+    <div class="caption">
+      Blake at the bar texting Janelle "come over" for the 47th time that night.<br>
+      <em>The Encana Natural Gas shirt was NOT helping his chances.</em>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="IMG_2594.jpg" alt="Blake with TV remote" />
+    <div class="caption">
+      Blake discovered Olivia Rodrigo and now nobody can reach him.<br>
+      <em>He is NOT okay and will NOT be taking questions.</em>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="IMG_2599.jpg" alt="Blake raising a wine glass" />
+    <div class="caption">
+      Toast to what? To being THAT GUY.<br>
+      <em>The hair. The smile. The lopsided cowlick. Certified iconic.</em>
+    </div>
+  </div>
+
+</div>
+
+<!-- JANELLE CALLOUT -->
+<div class="janelle-section">
+  <div class="janelle-title">COME OVER BABY JANELLE</div>
+  <div class="janelle-sub">
+    <span class="heart">❤️</span> Blake is waiting. Blake has snacks. Blake has beverages. <span class="heart">❤️</span><br>
+    He is currently squatting on the kitchen counter in a bikini.<br>
+    The door is unlocked. The vibes are immaculate.<br><br>
+    <strong style="color:var(--neon-pink); font-size:1.3em; text-shadow: 0 0 15px var(--neon-pink);">PLEASE. JANELLE. PLEASE.</strong>
+  </div>
+</div>
+
+<div class="divider">🔥 🔥 🔥 🔥 🔥</div>
+
+<!-- FUN FACTS -->
+<div class="facts-section">
+  <div class="facts-title">📋 FUN FACTS ABOUT BLAKE</div>
+
+  <div class="fact">🏆 Once squatted on a kitchen counter in a bikini and felt absolutely NO shame. Still thinks about it. Fondly.</div>
+  <div class="fact">🌿 Has memorized every strain of weed but cannot remember a single person's birthday.</div>
+  <div class="fact">🍺 His spirit animal is a Coors Light can that somehow ended up in a wine glass.</div>
+  <div class="fact">👀 Those eyes have seen things. They have SEEN THINGS. We don't know what. We don't ask.</div>
+  <div class="fact">🎮 His PS5 controller is his most committed relationship. Janelle is working on this.</div>
+  <div class="fact">🎵 Listens to Olivia Rodrigo and will fight anyone who has a problem with that.</div>
+  <div class="fact">👙 Owns exactly one swimsuit. Uses it exclusively indoors. On countertops.</div>
+  <div class="fact">⛽ Has an Encana Natural Gas shirt and absolutely refuses to explain it.</div>
+  <div class="fact">🥃 Drinks whiskey, smokes a cigar, and points a finger gun simultaneously. Multitasking KING.</div>
+  <div class="fact">💌 His love language is sending "come over" texts and then immediately falling asleep on the couch.</div>
+</div>
+
+<!-- BOTTOM MARQUEE -->
+<div class="marquee-wrap marquee-bottom">
+  <span>🔥 BLAKE ALLEN LEWIS FOREVER 🔥 COME OVER JANELLE 🔥 I LOVE DRINKING AND SMOKING WEEED 🔥 BLAKE ALLEN LEWIS FOREVER 🔥 COME OVER JANELLE 🔥</span>
+</div>
+
+<footer>
+  Made with 🍺 &amp; 🌿 &amp; absolutely zero regrets.<br>
+  <span>&copy; Blake Allen Lewis Fan Club &mdash; Est. Today</span>
+</footer>
+
+<script>
+  // Click burst
+  document.addEventListener('click', function(e) {
+    const emojis = ['🔥','💥','⭐','🌿','🍺','💨','❤️','👑','😂'];
+    const el = document.createElement('div');
+    el.className = 'burst';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = (e.clientX - 20) + 'px';
+    el.style.top  = (e.clientY - 20) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 700);
+  });
+</script>
+</body>
+</html>
