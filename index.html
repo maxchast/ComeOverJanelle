@@ -635,7 +635,7 @@
   // ===== GENERATE SHAKING FLAGS IN BACKGROUND =====
   const flagBg = document.getElementById('flag-bg');
   const shakeAnims = ['shake1','shake2','shake3','vibrate'];
-  const flagTypes = ['pride','conf','pride','conf','pride','pride','conf']; // more pride than conf
+  const flagTypes = ['pride','conf','pride','conf','pride','pride','conf'];
 
   for (let i = 0; i < 40; i++) {
     const iType = flagTypes[i % flagTypes.length];
@@ -657,7 +657,7 @@
     }
 
     const x = Math.random() * 98;
-    const y = Math.random() * 200; // spread over 200vh so they're everywhere while scrolling
+    const y = Math.random() * 200;
     const anim = shakeAnims[Math.floor(Math.random() * shakeAnims.length)];
     const dur  = (0.15 + Math.random() * 0.25).toFixed(2);
     const delay = (Math.random() * 0.3).toFixed(2);
@@ -670,8 +670,38 @@
       transform: scale(${scale});
       transform-origin: center center;
     `;
-
     flagBg.appendChild(flag);
+  }
+
+  // ===== FLYING VIBRATING BLAKE FACES =====
+  const blakePics = ['IMG_2428.jpg', 'IMG_2203.jpg'];
+  for (let i = 0; i < 30; i++) {
+    const face = document.createElement('img');
+    face.src = blakePics[i % blakePics.length];
+    const size = 60 + Math.random() * 80; // 60–140px
+    const x = Math.random() * 96;
+    const y = Math.random() * 200;
+    const anim = shakeAnims[Math.floor(Math.random() * shakeAnims.length)];
+    const dur  = (0.1 + Math.random() * 0.2).toFixed(2);
+    const delay = (Math.random() * 0.4).toFixed(2);
+    const rot = (Math.random() * 30 - 15).toFixed(1);
+    face.style.cssText = `
+      position: absolute;
+      left: ${x}%;
+      top: ${y}vh;
+      width: ${size}px;
+      height: ${size}px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      opacity: 0.55;
+      pointer-events: none;
+      transform: rotate(${rot}deg);
+      animation: ${anim} ${dur}s ${delay}s infinite;
+    `;
+    flagBg.appendChild(face);
   }
 
   // ===== CLICK BURST =====
