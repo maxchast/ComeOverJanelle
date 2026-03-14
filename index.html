@@ -20,8 +20,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #f5f0e8;
-      color: #1a1a1a;
+      background: #0a0a0a;
+      color: white;
       font-family: 'Bangers', cursive;
       overflow-x: hidden;
       cursor: crosshair;
@@ -163,7 +163,7 @@
       padding: 60px 20px 20px;
       position: relative;
       z-index: 5;
-      background: rgba(245,240,232,0.85);
+      background: rgba(10,10,10,0.88);
     }
 
     .hero-title {
@@ -189,7 +189,7 @@
     .hero-subtitle {
       font-family: 'Permanent Marker', cursive;
       font-size: clamp(1rem, 4vw, 2rem);
-      color: #333;
+      color: #eee;
       margin: 10px 0 20px;
       animation: pulse 2s ease-in-out infinite;
     }
@@ -244,7 +244,7 @@
 
     /* ===== SECTION BG ===== */
     .section-bg {
-      background: rgba(245,240,232,0.9);
+      background: rgba(10,10,10,0.88);
       position: relative;
       z-index: 5;
     }
@@ -264,8 +264,8 @@
       overflow: hidden;
       cursor: pointer;
       animation: fadeInUp 0.6s ease both;
-      background: white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      background: #1a1a1a;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .photo-card:nth-child(6n+1) { border: 4px solid var(--red);    animation-delay:.05s; }
@@ -281,21 +281,21 @@
     .photo-card img { width: 100%; display: block; }
 
     .caption {
-      background: white;
+      background: #1a1a1a;
       padding: 14px 16px;
       font-family: 'Permanent Marker', cursive;
       font-size: 0.95rem;
       text-align: center;
       line-height: 1.5;
       border-top: 2px solid;
-      color: #222;
+      color: #ddd;
     }
-    .photo-card:nth-child(6n+1) .caption { border-color: var(--red);    color: var(--red); }
-    .photo-card:nth-child(6n+2) .caption { border-color: var(--orange); color: #c86000; }
-    .photo-card:nth-child(6n+3) .caption { border-color: var(--yellow); color: #a07800; }
-    .photo-card:nth-child(6n+4) .caption { border-color: var(--green);  color: var(--green); }
-    .photo-card:nth-child(6n+5) .caption { border-color: var(--blue);   color: var(--blue); }
-    .photo-card:nth-child(6n+0) .caption { border-color: var(--purple); color: var(--purple); }
+    .photo-card:nth-child(6n+1) .caption { border-color: var(--red);    color: #ff6677; }
+    .photo-card:nth-child(6n+2) .caption { border-color: var(--orange); color: #ffaa44; }
+    .photo-card:nth-child(6n+3) .caption { border-color: var(--yellow); color: var(--yellow); }
+    .photo-card:nth-child(6n+4) .caption { border-color: var(--green);  color: #00dd66; }
+    .photo-card:nth-child(6n+5) .caption { border-color: var(--blue);   color: #4499ff; }
+    .photo-card:nth-child(6n+0) .caption { border-color: var(--purple); color: #cc66ff; }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
@@ -324,7 +324,7 @@
       padding: 60px 30px;
       position: relative;
       z-index: 5;
-      background: rgba(255,255,255,0.88);
+      background: rgba(10,10,10,0.9);
     }
     .janelle-title {
       font-family: 'Bangers', cursive;
@@ -346,7 +346,7 @@
     .janelle-sub {
       font-family: 'Pacifico', cursive;
       font-size: clamp(1.1rem, 3.5vw, 2rem);
-      color: #222;
+      color: #eee;
       margin-top: 24px;
       line-height: 1.8;
     }
@@ -389,15 +389,15 @@
       margin-bottom: 30px;
     }
     .fact {
-      background: white;
+      background: rgba(255,255,255,0.05);
       padding: 16px 22px;
       margin-bottom: 14px;
       border-radius: 0 8px 8px 0;
       font-family: 'Permanent Marker', cursive;
       font-size: 1rem;
-      color: #222;
+      color: #ddd;
       border-left: 6px solid;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
       transition: transform 0.2s;
     }
     .fact:hover { transform: translateX(8px); }
@@ -414,10 +414,10 @@
       padding: 40px 20px;
       font-family: 'Permanent Marker', cursive;
       font-size: 1rem;
-      color: #666;
+      color: rgba(255,255,255,0.35);
       position: relative;
       z-index: 5;
-      background: rgba(245,240,232,0.9);
+      background: rgba(10,10,10,0.9);
     }
     footer span {
       background: linear-gradient(90deg,
@@ -541,11 +541,6 @@
   <div class="photo-card">
     <img src="IMG_2094.jpg" alt="Blake in bikini with two cats" />
     <div class="caption">Bikini arc continues. Two cats. Zero regrets. Full commitment.<br><em>The cats did not consent to this photoshoot. They stayed anyway.</em></div>
-  </div>
-
-  <div class="photo-card">
-    <img src="IMG_2139.jpg" alt="Blake shirtless at a venue" />
-    <div class="caption">Blake arrived at the bar and immediately removed his shirt.<br><em>Standard operating procedure at this point.</em></div>
   </div>
 
   <div class="photo-card">
